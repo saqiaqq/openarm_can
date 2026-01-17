@@ -46,6 +46,7 @@ private:
     // approximation.
     double gripper_to_motor_position(double gripper_position) {
         // Map gripper position (0.0=closed, 1.0=open) to motor position
+        // 确保使用最新的零位校准值
         return (gripper_position - gripper_open_position_) /
                    (gripper_closed_position_ - gripper_open_position_) *
                    (motor_closed_position_ - motor_open_position_) +
@@ -61,10 +62,10 @@ private:
     }
 
     // Gripper configuration
-    double gripper_open_position_ = 1.0;
-    double gripper_closed_position_ = 0.0;
-    double motor_open_position_ = -1.0472;  // 60 degrees
-    double motor_closed_position_ = 0.0;
+    double gripper_open_position_ = 0.044; // Max opening in meters
+    double gripper_closed_position_ = 0.0; // Closed in meters
+    double motor_open_position_ = -0.6;  // Reduced from 0.0 to -0.6 to prevent over-opening crash
+    double motor_closed_position_ = -1.1; // -1.05 was successful, -1.1 ensures tight seal
 };
 
 }  // namespace openarm::can::socket

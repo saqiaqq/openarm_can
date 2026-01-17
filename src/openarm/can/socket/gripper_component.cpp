@@ -34,9 +34,7 @@ void GripperComponent::init_motor_device(damiao_motor::MotorType motor_type, uin
 
 void GripperComponent::open(double kp, double kd) { set_position(gripper_open_position_, kp, kd); }
 
-void GripperComponent::close(double kp, double kd) {
-    set_position(gripper_closed_position_, kp, kd);
-}
+void GripperComponent::close(double kp, double kd) { set_position(gripper_closed_position_, kp, kd); }
 
 void GripperComponent::set_position(double gripper_position, double kp, double kd) {
     if (!motor_device_) return;
