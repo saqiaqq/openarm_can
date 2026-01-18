@@ -97,6 +97,8 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/OpenArmCANConfig.cmake
               ${CMAKE_CURRENT_BINARY_DIR}/OpenArmCANConfigVersion.cmake
         DESTINATION ${INSTALL_CMAKE_DIR})
 
+install(FILES package.xml DESTINATION share/openarm_can)
+
 # pkg-config package
 if(IS_ABSOLUTE "${CMAKE_INSTALL_INCLUDEDIR}")
   set(PKG_CONFIG_INCLUDEDIR "${CMAKE_INSTALL_INCLUDEDIR}")
